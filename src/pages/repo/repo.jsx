@@ -18,7 +18,7 @@ import { useRepo, updateBuilds } from 'hooks/swr';
 import NotFound from 'pages/not-found';
 import { Routes } from 'routes/routes';
 import { ReactComponent as DemoIcon } from 'svg/demo.svg';
-import { axiosWrapper } from 'utils';
+import { axiosWrapper, humanizeRepoName } from 'utils';
 
 import css from './repo.module.scss';
 
@@ -142,7 +142,11 @@ const Repo = ({ user }) => {
                 <BreadcrumbItem href="/" text="Repositories" />
                 <BreadcrumbSpacer />
               </Breadcrumb>
-              <h1>{name}</h1>
+              <h1>
+                {humanizeRepoName(namespace)}
+                /
+                {name}
+              </h1>
             </div>
             {!isRepoNavDisabled && userIsAdminOrHasWritePerm && (
               <Button

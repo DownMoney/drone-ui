@@ -14,7 +14,7 @@ import { AppContext } from 'context';
 import { useLocalStorage, useCustomTitle, useToast } from 'hooks';
 import { useStore } from 'hooks/store';
 import { useViewer, useSyncAccount } from 'hooks/swr';
-import { byBuildCreatedAtDesc, byRepoNameAsc } from 'utils';
+import { byBuildCreatedAtDesc, byRepoNameAsc, humanizeRepoName } from 'utils';
 
 import styles from './home.module.scss';
 
@@ -73,7 +73,7 @@ export default function Home() {
 
   const orgOptions = useMemo(() => {
     if (!orgs) return [{ value: '', key: 'All Organizations' }];
-    const returnOrgs = orgs?.map((org) => ({ value: org, key: org }));
+    const returnOrgs = orgs?.map((org) => ({ value: org, key: humanizeRepoName(org) }));
     return [{ value: '', key: 'All Organizations' }, ...returnOrgs];
   }, [orgs]);
 

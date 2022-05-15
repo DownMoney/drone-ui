@@ -8,6 +8,7 @@ import Status from 'components/shared/status';
 import { ReactComponent as Commit } from 'svg/scm/commit.svg';
 
 import styles from './repos.module.scss';
+import { humanizeRepoName } from 'utils';
 
 const cx = classNames.bind(styles);
 
@@ -26,7 +27,7 @@ const Repos = (props) => {
             <div className={cx('item', build ? null : 'inactive')}>
               <h3 className={cx('title')}>
                 <Status status={build?.status ?? 'inactive'} />
-                <span>{slug}</span>
+                <span>{humanizeRepoName(slug)}</span>
               </h3>
               <div className={cx('detail')}>
                 <div className={cx('spacer')} />

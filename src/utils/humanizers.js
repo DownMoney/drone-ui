@@ -29,3 +29,5 @@ export const humanizeStepStatus = (status) => {
       return status;
   }
 };
+
+export const humanizeRepoName = (name) => decodeURIComponent(name);
